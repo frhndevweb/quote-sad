@@ -20,6 +20,7 @@
             background-image: url('https://github.com/frhndevweb/quote-sad/blob/master/6257aa0e-e169-41f4-a648-5a57f8cefab8.jpeg?raw=true');
             background-size: cover;
             background-position: center;
+            transition: background-image 1s ease-in-out;
         }
 
         .container {
@@ -52,6 +53,13 @@
             transition: opacity 0.5s ease;
         }
 
+        .author {
+            font-size: 1.2em;
+            font-weight: 400;
+            color: #bdc3c7;
+            margin-top: 10px;
+        }
+
         button {
             background-color: #e74c3c;
             color: #ecf0f1;
@@ -67,6 +75,26 @@
             background-color: #c0392b;
             transform: scale(1.05);
         }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #bdc3c7;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            #quote {
+                font-size: 1.2em;
+            }
+
+            button {
+                font-size: 0.9em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -74,9 +102,12 @@
         <h1>Apalah....</h1>
         <div id="quote-box">
             <p id="quote">Kenangan yang dulu indah kini hanya menjadi luka yang sulit disembuhkan.</p>
-            <p>Sabar yaaaa, masih dalam pengembangan -hannaaffiii</p>
+          <p class="author" id="author">-</p>
         </div>
         <button id="new-quote">Get New Quote</button>
+        <div class="footer">
+            &copy; Hannaaffiii.
+        </div>
     </div>
     <audio autoplay>
         <source src="https://github.com/frhndevweb/quote-sad/raw/master/audio.mp3" type="audio/mpeg">
@@ -84,36 +115,38 @@
     </audio>
     <script>
         const quotes = [
-            "Kenangan yang dulu indah kini hanya menjadi luka yang sulit disembuhkan.",
-            "Mengapa kebahagiaan selalu terasa begitu singkat sementara kesedihan bertahan begitu lama?",
-            "Aku tersenyum, tapi hatiku menangis dalam kesunyian.",
-            "Rindu ini begitu menyakitkan, terutama ketika aku tahu kau tak merindukanku kembali.",
-            "Kadang, yang terbaik yang bisa kita lakukan hanyalah menerima bahwa tidak semua cerita berakhir bahagia.",
-            "Hujan ini mengingatkanku pada air mata yang pernah kucurahkan untukmu.",
-            "Aku mencoba melupakanmu, tetapi kenangan tentangmu terus menghantui.",
-            "Kadang aku bertanya, apakah kau pernah merindukanku seperti aku merindukanmu?",
-            "Kita dulu dekat seperti langit dan bumi, tapi sekarang jarak kita seperti bintang yang jauh di angkasa.",
-            "Cinta ini begitu dalam, tapi kau memilih pergi tanpa melihat ke belakang.",
-            "Ketika kamu menyadari bahwa orang yang kamu sayangi lebih bahagia tanpamu, itulah saatnya melepaskan.",
-            "Terkadang, yang paling menyakitkan bukanlah kehilangan, tapi mengingat bagaimana semuanya dimulai dengan begitu indah dan berakhir dengan begitu menyakitkan.",
-            "Menghapus seseorang dari hidupmu bukan berarti kamu membenci mereka, tapi karena kamu mencintai dirimu sendiri lebih banyak.",
-            "Air mata adalah kata-kata yang hati tidak bisa ucapkan.",
-            "Rasanya aneh ketika seseorang yang begitu berarti bagimu tiba-tiba menjadi seseorang yang tidak pernah kamu kenal.",
-            "Semua kenangan yang kita buat bersama sekarang hanya tinggal kenangan yang menyakitkan.",
-            "Kecewa adalah ketika harapanmu tidak sejalan dengan kenyataan.",
-            "Setiap perpisahan menyisakan luka yang tak selalu bisa sembuh dengan waktu.",
-            "Kebahagiaan yang dulu kita rasakan sekarang berubah menjadi rasa sakit yang tak tertahankan.",
-            "Mencintaimu adalah kesalahan terindah yang pernah kulakukan."
+            { text: "Kenangan yang dulu indah kini hanya menjadi luka yang sulit disembuhkan.", author: "Putrii" },
+            { text: "Mengapa kebahagiaan selalu terasa begitu singkat sementara kesedihan bertahan begitu lama?", author: "Chika" },
+            { text: "Aku tersenyum, tapi hatiku menangis dalam kesunyian.", author: "Denzz" },
+            { text: "Rindu ini begitu menyakitkan, terutama ketika aku tahu kau tak merindukanku kembali.", author: "Itachi Slebeww" },
+            { text: "Kadang, yang terbaik yang bisa kita lakukan hanyalah menerima bahwa tidak semua cerita berakhir bahagia.", author: "Cipa" },
+            { text: "Hujan ini mengingatkanku pada air mata yang pernah kucurahkan untukmu.", author: "Donz" },
+            { text: "Aku mencoba melupakanmu, tetapi kenangan tentangmu terus menghantui.", author: "xydea" },
+            { text: "Kadang aku bertanya, apakah kau pernah merindukanku seperti aku merindukanmu?", author: "es batu" },
+            { text: "Kita dulu dekat seperti langit dan bumi, tapi sekarang jarak kita seperti bintang yang jauh di angkasa.", author: "Linnzz" },
+            { text: "Cinta ini begitu dalam, tapi kau memilih pergi tanpa melihat ke belakang.", author: "Chinnnn" },
+            { text: "Ketika kamu menyadari bahwa orang yang kamu sayangi lebih bahagia tanpamu, itulah saatnya melepaskan.", author: "Nayyy" },
+            { text: "Terkadang, yang paling menyakitkan bukanlah kehilangan, tapi mengingat bagaimana semuanya dimulai dengan begitu indah dan berakhir dengan begitu menyakitkan.", author: "Gde Prama" },
+            { text: "Menghapus seseorang dari hidupmu bukan berarti kamu membenci mereka, tapi karena kamu mencintai dirimu sendiri lebih banyak.", author: "Bang" },
+            { text: "Air mata adalah kata-kata yang hati tidak bisa ucapkan.", author: "Bila ziada" },
+            { text: "Rasanya aneh ketika seseorang yang begitu berarti bagimu tiba-tiba menjadi seseorang yang tidak pernah kamu kenal.", author: "Angel" },
+            { text: "Semua kenangan yang kita buat bersama sekarang hanya tinggal kenangan yang menyakitkan.", author: "Biru" },
+            { text: "Kecewa adalah ketika harapanmu tidak sejalan dengan kenyataan.", author: "Cii" },
+            { text: "Setiap perpisahan menyisakan luka yang tak selalu bisa sembuh dengan waktu.", author: "Cilmodesad" },
+            { text: "Kebahagiaan yang dulu kita rasakan sekarang berubah menjadi rasa sakit yang tak tertahankan.", author: "Daraa" },
+            { text: "Mencintaimu adalah kesalahan terindah yang pernah kulakukan.", author: "Clouds.tyr" }
         ];
 
         const quoteElement = document.getElementById('quote');
+        const authorElement = document.getElementById('author');
 
         document.getElementById('new-quote').addEventListener('click', function() {
             const randomIndex = Math.floor(Math.random() * quotes.length);
             quoteElement.style.opacity = 0;
 
             setTimeout(() => {
-                quoteElement.innerText = quotes[randomIndex];
+                quoteElement.innerText = quotes[randomIndex].text;
+                authorElement.innerText = `- ${quotes[randomIndex].author}`;
                 quoteElement.style.opacity = 1;
             }, 500);
         });
