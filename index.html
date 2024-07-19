@@ -23,16 +23,21 @@
             transition: background-image 1s ease-in-out;
         }
 
-        .container {
+        .container, .upload-container {
             text-align: center;
             background: rgba(0, 0, 0, 0.7);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease;
+            display: none;
         }
 
-        .container:hover {
+        .container.active, .upload-container.active {
+            display: block;
+        }
+
+        .container:hover, .upload-container:hover {
             transform: scale(1.05);
         }
 
@@ -98,21 +103,40 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container active" id="quote-section">
         <h1>Apalah....</h1>
         <div id="quote-box">
             <p id="quote">Kenangan yang dulu indah kini hanya menjadi luka yang sulit disembuhkan.</p>
-          <p class="author" id="author">-</p>
+            <p class="author" id="author">-</p>
         </div>
         <button id="new-quote">Get New Quote</button>
+        <p>&nbsp;</p>
+        <button id="upload-quote-btn">Upload Quote</button>
         <div class="footer">
             &copy; Hannaaffiii.
         </div>
     </div>
+
+    <div class="upload-container" id="upload-section">
+        <h1>Upload your quotes</h1>
+        <form id="upload-form">
+            <input type="text" id="new-quote-text" placeholder="Enter quote" required><br>
+            <input type="text" id="new-quote-author" placeholder="Enter author" required><br>
+            <p>&nbsp;</p>
+            <button type="submit">Submit</button>
+            <p>&nbsp;</p>
+        </form>
+        <button id="back-to-quotes-btn">Back to Quotes</button>
+        <div class="footer">
+            &copy; Hannaaffiii.
+        </div>
+    </div>
+
     <audio autoplay>
         <source src="https://github.com/frhndevweb/quote-sad/raw/master/audio.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+    
     <script>
         const quotes = [
             { text: "Kenangan yang dulu indah kini hanya menjadi luka yang sulit disembuhkan.", author: "Putrii" },
@@ -139,8 +163,16 @@
 
         const quoteElement = document.getElementById('quote');
         const authorElement = document.getElementById('author');
+        const quoteSection = document.getElementById('quote-section');
+        const uploadSection = document.getElementById('upload-section');
+        const uploadForm = document.getElementById('upload-form');
+        const newQuoteText = document.getElementById('new-quote-text');
+        const newQuoteAuthor = document.getElementById('new-quote-author');
+        const newQuoteBtn = document.getElementById('new-quote');
+        const uploadQuoteBtn = document.getElementById('upload-quote-btn');
+        const backToQuotesBtn = document.getElementById('back-to-quotes-btn');
 
-        document.getElementById('new-quote').addEventListener('click', function() {
+        function showRandomQuote() {
             const randomIndex = Math.floor(Math.random() * quotes.length);
             quoteElement.style.opacity = 0;
 
@@ -149,7 +181,38 @@
                 authorElement.innerText = `- ${quotes[randomIndex].author}`;
                 quoteElement.style.opacity = 1;
             }, 500);
+        }
+
+        newQuoteBtn.addEventListener('click', showRandomQuote);
+
+        uploadQuoteBtn.addEventListener('click', function() {
+            quoteSection.classList.remove('active');
+            uploadSection.classList.add('active');
         });
+
+        backToQuotesBtn.addEventListener('click', function() {
+            uploadSection.classList.remove('active');
+            quoteSection.classList.add('active');
+        });
+
+        uploadForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const newQuote = {
+                text: newQuoteText.value,
+                author: newQuoteAuthor.value
+            };
+            quotes.push(newQuote);
+            newQuoteText.value = '';
+            newQuoteAuthor.value = '';
+            alert('Quote added successfully!');
+
+            showRandomQuote();
+
+            uploadSection.classList.remove('active');
+            quoteSection.classList.add('active');
+        });
+
+        showRandomQuote();
     </script>
 </body>
 </html>
