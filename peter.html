@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sad Quotes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            transform: translateX(-50%) translateY(-50%);
+            background-size: cover;
+            transition: 1s opacity;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        #quote-box {
+            margin-bottom: 20px;
+        }
+
+        #quote {
+            font-size: 1.5em;
+            font-weight: 300;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        button {
+            background-color: #e74c3c;
+            color: #ecf0f1;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>apalah...</h1>
+        <div id="quote-box">
+            <p id="quote">Kenangan yang dulu indah kini hanya menjadi luka yang sulit disembuhkan.</p>
+          <p>Sabar yaaaa, masih dalam pengembangan -hannaaffiii</p>
+        </div>
+        <button id="new-quote">Get New Quote</button>
+    </div>
+    <script>
+        const quotes = [
+            "Kenangan yang dulu indah kini hanya menjadi luka yang sulit disembuhkan.",
+            "Mengapa kebahagiaan selalu terasa begitu singkat sementara kesedihan bertahan begitu lama?",
+            "Aku tersenyum, tapi hatiku menangis dalam kesunyian.",
+            "Rindu ini begitu menyakitkan, terutama ketika aku tahu kau tak merindukanku kembali.",
+            "Kadang, yang terbaik yang bisa kita lakukan hanyalah menerima bahwa tidak semua cerita berakhir bahagia.",
+            "Hujan ini mengingatkanku pada air mata yang pernah kucurahkan untukmu.",
+            "Aku mencoba melupakanmu, tetapi kenangan tentangmu terus menghantui.",
+            "Kadang aku bertanya, apakah kau pernah merindukanku seperti aku merindukanmu?",
+            "Kita dulu dekat seperti langit dan bumi, tapi sekarang jarak kita seperti bintang yang jauh di angkasa.",
+            "Cinta ini begitu dalam, tapi kau memilih pergi tanpa melihat ke belakang."
+        ];
+
+        const quoteElement = document.getElementById('quote');
+
+        document.getElementById('new-quote').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            quoteElement.style.opacity = 0;
+
+            setTimeout(() => {
+                quoteElement.innerText = quotes[randomIndex];
+                quoteElement.style.opacity = 1;
+            }, 500);
+        });
+    </script>
+</body>
+</html>
