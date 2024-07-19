@@ -16,6 +16,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden;
         }
         video {
             position: fixed;
@@ -26,7 +27,7 @@
             width: auto;
             height: auto;
             z-index: -1;
-            transform: translateX(-50%) translateY(-50%);
+            transform: translate(-50%, -50%);
             background-size: cover;
             transition: 1s opacity;
         }
@@ -80,7 +81,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>apalah....</h1>
+        <h1>Apalah....</h1>
         <div id="quote-box">
             <p id="quote">Kenangan yang dulu indah kini hanya menjadi luka yang sulit disembuhkan.</p>
             <p>Sabar yaaaa, masih dalam pengembangan -hannaaffiii</p>
@@ -98,17 +99,18 @@
             "Aku mencoba melupakanmu, tetapi kenangan tentangmu terus menghantui.",
             "Kadang aku bertanya, apakah kau pernah merindukanku seperti aku merindukanmu?",
             "Kita dulu dekat seperti langit dan bumi, tapi sekarang jarak kita seperti bintang yang jauh di angkasa.",
-            "Cinta ini begitu dalam, tapi kau memilih pergi tanpa melihat ke belakang."
-            "Ketika kamu menyadari bahwa orang yang kamu sayangi lebih bahagia tanpamu, itulah saatnya melepaskan."
-            "Terkadang, yang paling menyakitkan bukanlah kehilangan, tapi mengingat bagaimana semuanya dimulai dengan begitu indah dan berakhir dengan begitu menyakitkan."
-            "Menghapus seseorang dari hidupmu bukan berarti kamu membenci mereka, tapi karena kamu mencintai dirimu sendiri lebih banyak."
-            "Air mata adalah kata-kata yang hati tidak bisa ucapkan."
-            "Rasanya aneh ketika seseorang yang begitu berarti bagimu tiba-tiba menjadi seseorang yang tidak pernah kamu kenal."
-            "Semua kenangan yang kita buat bersama sekarang hanya tinggal kenangan yang menyakitkan."
-            "Kecewa adalah ketika harapanmu tidak sejalan dengan kenyataan."
-            "Setiap perpisahan menyisakan luka yang tak selalu bisa sembuh dengan waktu."
-            "Kebahagiaan yang dulu kita rasakan sekarang berubah menjadi rasa sakit yang tak tertahankan."
+            "Cinta ini begitu dalam, tapi kau memilih pergi tanpa melihat ke belakang.",
+            "Ketika kamu menyadari bahwa orang yang kamu sayangi lebih bahagia tanpamu, itulah saatnya melepaskan.",
+            "Terkadang, yang paling menyakitkan bukanlah kehilangan, tapi mengingat bagaimana semuanya dimulai dengan begitu indah dan berakhir dengan begitu menyakitkan.",
+            "Menghapus seseorang dari hidupmu bukan berarti kamu membenci mereka, tapi karena kamu mencintai dirimu sendiri lebih banyak.",
+            "Air mata adalah kata-kata yang hati tidak bisa ucapkan.",
+            "Rasanya aneh ketika seseorang yang begitu berarti bagimu tiba-tiba menjadi seseorang yang tidak pernah kamu kenal.",
+            "Semua kenangan yang kita buat bersama sekarang hanya tinggal kenangan yang menyakitkan.",
+            "Kecewa adalah ketika harapanmu tidak sejalan dengan kenyataan.",
+            "Setiap perpisahan menyisakan luka yang tak selalu bisa sembuh dengan waktu.",
+            "Kebahagiaan yang dulu kita rasakan sekarang berubah menjadi rasa sakit yang tak tertahankan.",
             "Mencintaimu adalah kesalahan terindah yang pernah kulakukan."
+        ];
 
         const quoteElement = document.getElementById('quote');
 
